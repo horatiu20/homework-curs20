@@ -21,10 +21,10 @@ public class TransactionController {
 		return transactionService.getAllTransactions();
 	}
 
-//	@GetMapping("byType")
-//	List<Transaction> findByType(@RequestParam(required = false) Type transactionType) {
-//		return transactionService.findByType();
-//	}
+	@GetMapping("byType")
+	List<Transaction> findByType(@RequestParam(required = false) Type transactionType) {
+		return transactionService.findByType();
+	}
 
 	@PostMapping
 	Transaction postTransaction(@RequestBody Transaction transaction) {
