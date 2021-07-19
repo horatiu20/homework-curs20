@@ -30,4 +30,10 @@ public class TransactionController {
 	Transaction postTransaction(@RequestBody Transaction transaction) {
 		return transactionService.postTransaction(transaction);
 	}
+
+	@DeleteMapping("{transactionId}")
+	Transaction deleteTransaction(@PathVariable int transactionId){
+		return transactionService.deleteTransaction(transactionId)
+				.orElse(null);
+	}
 }

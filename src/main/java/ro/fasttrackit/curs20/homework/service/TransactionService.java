@@ -6,6 +6,7 @@ import ro.fasttrackit.curs20.homework.entity.Type;
 import ro.fasttrackit.curs20.homework.repository.TransactionRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TransactionService {
@@ -26,6 +27,10 @@ public class TransactionService {
 	public Transaction postTransaction(Transaction transaction) {
 		transaction.setId(null);
 		return transactionRepository.save(transaction);
+	}
+
+	public Optional<Transaction> deleteTransaction(int transactionId){
+		return transactionRepository.delete();
 	}
 
 
