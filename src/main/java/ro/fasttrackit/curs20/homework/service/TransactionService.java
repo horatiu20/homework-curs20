@@ -15,6 +15,10 @@ public class TransactionService {
 		this.transactionRepository = transactionRepository;
 	}
 
+	public List<Transaction> getAllTransactions(){
+		return transactionRepository.findAll();
+	}
+
 	public List<Transaction> findByType() {
 		return transactionRepository.findByType(Type.BUY);
 	}

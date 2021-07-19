@@ -1,12 +1,16 @@
 package ro.fasttrackit.curs20.homework.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import ro.fasttrackit.curs20.homework.entity.Transaction;
 import ro.fasttrackit.curs20.homework.entity.Type;
 
 import java.util.List;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
+
+	@Query("SELECT * from Transaction")
+	List<Transaction> getAllTransactions();
 
 	List<Transaction> findByType(Type transactionType);
 

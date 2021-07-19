@@ -17,6 +17,11 @@ public class TransactionController {
 	}
 
 	@GetMapping
+	List<Transaction> getAllTransactions(){
+		return transactionService.getAllTransactions();
+	}
+
+	@GetMapping
 	List<Transaction> findByType(@RequestParam(required = false) Type transactionType) {
 		return transactionService.findByType();
 	}
