@@ -9,22 +9,22 @@ import java.util.List;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
 
-	@Query("SELECT * from Transaction")
+	@Query(value = "SELECT * from Transaction", nativeQuery = true)
 	List<Transaction> getAllTransactions();
 
-	List<Transaction> findByType(Type transactionType);
-
-	List<Transaction> findByMinAmount(double minAmount);
-
-	List<Transaction> findByMaxAmount(double maxAmount);
-
-	List<Transaction> findByTypeAndMinAmount(Type transactionType, double minAmount);
-
-	List<Transaction> findByTypeAndMaxAmount(Type transactionType, double maxAmount);
-
-	List<Transaction> findByMinAndMax(double minAmount, double maxAmount);
-
-	List<Transaction> findByTypeAndMinAndMax(Type transactionType, double minAmount, double maxAmount);
-
+//	List<Transaction> findByType(Type transactionType);
+//
+//	List<Transaction> findByMinAmount(double minAmount);
+//
+//	List<Transaction> findByMaxAmount(double maxAmount);
+//
+//	List<Transaction> findByTypeAndMinAmount(Type transactionType, double minAmount);
+//
+//	List<Transaction> findByTypeAndMaxAmount(Type transactionType, double maxAmount);
+//
+//	List<Transaction> findByMinAndMax(double minAmount, double maxAmount);
+//
+//	List<Transaction> findByTypeAndMinAndMax(Type transactionType, double minAmount, double maxAmount);
+//
 
 }

@@ -19,9 +19,9 @@ public class TransactionService {
 		return transactionRepository.findAll();
 	}
 
-	public List<Transaction> findByType() {
-		return transactionRepository.findByType(Type.BUY);
-	}
+//	public List<Transaction> findByType() {
+//		return transactionRepository.findByType(Type.BUY);
+//	}
 
 	public Transaction postTransaction(Transaction transaction) {
 		transaction.setId(null);
