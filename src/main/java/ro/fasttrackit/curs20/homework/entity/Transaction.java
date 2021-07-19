@@ -7,6 +7,7 @@ public class Transaction {
 	@Id
 	@GeneratedValue
 	private Integer id;
+
 	private String product;
 	private Type transactionType;
 	private double amount;
