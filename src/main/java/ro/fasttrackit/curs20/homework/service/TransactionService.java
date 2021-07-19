@@ -24,7 +24,6 @@ public class TransactionService {
 	}
 
 	public Transaction postTransaction(Transaction transaction) {
-		//validari
 		transaction.setId(null);
 		return transactionRepository.save(transaction);
 	}
