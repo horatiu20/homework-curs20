@@ -1,8 +1,10 @@
 package ro.fasttrackit.curs20.homework.entity;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity
 public class Transaction {
 	@Id
 	@GeneratedValue
