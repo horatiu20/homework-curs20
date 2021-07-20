@@ -20,8 +20,8 @@ public class TransactionService {
 		return transactionRepository.findAll();
 	}
 
-	public List<Transaction> findByType() {
-		return transactionRepository.findByType(Type.BUY);
+	public List<Transaction> findByType(Type transactionType) {
+		return transactionRepository.findByType(transactionType);
 	}
 
 	public Transaction postTransaction(Transaction transaction) {

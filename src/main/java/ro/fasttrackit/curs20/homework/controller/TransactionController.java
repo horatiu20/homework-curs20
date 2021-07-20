@@ -23,7 +23,7 @@ public class TransactionController {
 
 	@GetMapping("byType")
 	List<Transaction> findByType(@RequestParam(required = false) Type transactionType) {
-		return transactionService.findByType();
+		return transactionService.findByType(transactionType);
 	}
 
 	@PostMapping
