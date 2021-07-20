@@ -21,7 +21,7 @@ public class TransactionService {
 	}
 
 	public List<Transaction> findByType(Type transactionType) {
-		return transactionRepository.findByType(transactionType);
+		return transactionRepository.
 	}
 
 	public Transaction postTransaction(Transaction transaction) {
