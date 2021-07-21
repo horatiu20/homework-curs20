@@ -6,8 +6,11 @@ import ro.fasttrackit.curs20.homework.entity.Type;
 import ro.fasttrackit.curs20.homework.repository.TransactionRepository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 @Service
 public class TransactionService {
@@ -49,6 +52,29 @@ public class TransactionService {
 		transactionOptional
 				.ifPresent(transactionRepository::delete);
 		return transactionOptional;
+	}
+
+	public Optional<Transaction> patchTransaction(int transactionId, Transaction transaction) {
+		Optional<Transaction> transactionById = getById(transactionId);
+		Optional<Transaction> patchedTransaction = transactionById
+				.map(oldTransaction -> new Transaction(
+						transaction.getProduct() != null ? transaction.getProduct() : oldTransaction.getProduct(),
+						transaction.getTransactionType() != null ? transaction.getTransactionType() : oldTransaction.getTransactionType(),
+						transaction.getAmount() != 0 ? transaction.getAmount() : oldTransaction.getAmount()));
+		patchedTransaction.ifPresent(newTransaction -> putTransaction(transactionId, newTransaction));
+		return patchedTransaction;
+	}
+
+	public Map<Type, List<Double>> mapTypeToAmount() {
+		return transactionRepository.findAll().stream()
+				.collect(groupingBy(Transaction::getTransactionType,
+						mapping(Transaction::getAmount, toList())));
+	}
+
+	public Map<String, List<Double>> mapProductToAmount() {
+		return transactionRepository.findAll().stream()
+				.collect(groupingBy(Transaction::getProduct,
+						mapping(Transaction::getAmount, toList())));
 	}
 }
 
