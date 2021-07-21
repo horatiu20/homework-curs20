@@ -37,6 +37,13 @@ public class TransactionService {
 		return transactionRepository.save(transaction);
 	}
 
+	public Optional<Transaction> putTransaction(int transactionId, Transaction newTransaction) {
+		Optional<Transaction> replacedTransaction = deleteTransaction(transactionId);
+		replacedTransaction
+				.ifPresent(deleteTransaction -> postTransaction(newTransaction));
+		return replacedTransaction;
+	}
+
 	public Optional<Transaction> deleteTransaction(int transactionId) {
 		Optional<Transaction> transactionOptional = getById(transactionId);
 		transactionOptional

@@ -35,6 +35,11 @@ public class TransactionController {
 		return transactionService.postTransaction(transaction);
 	}
 
+	@PutMapping("{transactionId}")
+	Transaction putTransaction(@PathVariable int transactionId, @RequestBody Transaction newTransaction) {
+		return transactionService.putTransaction(transactionId, newTransaction)
+				.orElse(null);
+	}
 	@DeleteMapping("{transactionId}")
 	Transaction deleteTransaction(@PathVariable int transactionId) {
 		return transactionService.deleteTransaction(transactionId)
