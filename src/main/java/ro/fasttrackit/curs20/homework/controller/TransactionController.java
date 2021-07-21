@@ -17,13 +17,17 @@ public class TransactionController {
 	}
 
 	@GetMapping
-	List<Transaction> getAllTransactions() {
-		return transactionService.getAllTransactions();
+	List<Transaction> getAllTransactions(@RequestParam(required = false) String product,
+	                                     @RequestParam(required = false) Type transactionType,
+	                                     @RequestParam(required = false) Double minAmount,
+	                                     @RequestParam(required = false) Double maxAmount) {
+		return transactionService.getAllTransactions(product, transactionType, minAmount, maxAmount);
 	}
 
-	@GetMapping("byType")
-	List<Transaction> findByType(@RequestParam(required = false) Type transactionType) {
-		return transactionService.findByType(transactionType);
+	@GetMapping("{transactionId}")
+	Transaction getById(@PathVariable int transactionId) {
+		return transactionService.getById(transactionId)
+				.orElse(null);
 	}
 
 	@PostMapping
@@ -32,7 +36,7 @@ public class TransactionController {
 	}
 
 	@DeleteMapping("{transactionId}")
-	Transaction deleteTransaction(@PathVariable int transactionId){
+	Transaction deleteTransaction(@PathVariable int transactionId) {
 		return transactionService.deleteTransaction(transactionId)
 				.orElse(null);
 	}
